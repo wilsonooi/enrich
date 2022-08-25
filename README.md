@@ -1,14 +1,12 @@
-================================================================================================
 Enrich Trade Data API
 ================================================================================================
-================================================================================================
+
 Overview
 ================================================================================================
 This maven project is created to expose an API to enrich trade data by translating the product id
 to its corresponding product name. This project comprises of only one POST method and it is build
 on micronaut framework and Java 17.
 
-================================================================================================
 How Does It Works?
 ================================================================================================
 The service will first load the content of product.csv into the key value pair hashmap that will
@@ -16,7 +14,6 @@ aid the searches later on upon starting of server. This is a static data file (p
 at src/main/resources. There is also another data file called invalid_product.csv that will be use
 in the test for invalid data line scenario.
 
-================================================================================================
 Static Data File
 ================================================================================================
 In order to update to a bigger product data file, you are free to create and replace the 
@@ -25,7 +22,6 @@ data line in following format product_id,product_name. Any format other than thi
 to memory and therefore will result to "Missing Product Name" later during data enrichment. You 
 can replace invalid_product as you wish as well.
 
-================================================================================================
 How to run?
 ================================================================================================
 1) Download the code or clone it from github and open it on ide of your choice e.g. intellij/
@@ -43,8 +39,7 @@ eclipse.
    - You should see the jar file specified in the Output Directory earlier.
    - Go to cmd/terminal and fire the following command => java -jar {jarfile.jar}
    - Server should indicate as "Startup completed"
-
-================================================================================================
+   
 Sending HTTP Request
 ================================================================================================
 Once the server is up and running, you may fire request to Enhance Trade Data API with the
@@ -61,8 +56,7 @@ following ways:
    - Select POST method and enter the endpoint, localhost:8080/enrich
    - Add Content-Type = text/csv in the headers
    - Select Body -> raw and copy the content of trade.csv to the blank space and press SEND.
-
-================================================================================================
+   
 Trade Data file and HTTP response
 ================================================================================================
 You can generate your own trade input file and following is the sample content of trade file:
@@ -77,17 +71,16 @@ Note that nvalid trade data e.g. 20160101,11,EUR,35.34,test1,test2 will be disca
 processing.
 
 And sample HTTP response:
+
 ![img.png](img.png)
 
 Note that invalid product id resulted to "Missing Product Name" being return.
 
-================================================================================================
 Port
 ================================================================================================
 The server will run on default port 8080.
 
 
-================================================================================================
 Log
 ================================================================================================
 The server will error logged invalid date format to both console and file. The log file is located
