@@ -1,6 +1,10 @@
 micronaut:
   application:
     name: trade
+  executors:
+    io:
+      type: fixed
+      nThreads: 75
 netty:
   default:
     allocator:
