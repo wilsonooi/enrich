@@ -62,12 +62,12 @@ Trade Data file and HTTP response
 You can generate your own trade input file and following is the sample content of trade file:
 
 date,product_id,currency,price
-20160101,1,EUR,10.0
-20160101,2,EUR,20.1
-20160101,3,EUR,30.34
+20160101,1,EUR,10.0 
+20160101,2,EUR,20.1 
+20160101,3,EUR,30.34 
 20160101,11,EUR,35.34
 
-Note that nvalid trade data e.g. 20160101,11,EUR,35.34,test1,test2 will be discarded before further
+Note that invalid trade data e.g. 20160101,11,EUR,35.34,test1,test2 will be discarded before further
 processing.
 
 And sample HTTP response:
