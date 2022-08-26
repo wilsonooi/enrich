@@ -3,19 +3,17 @@ package wilson.coding.task;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.reactivex.rxjava3.core.Flowable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 import jakarta.inject.Inject;
 
-import java.io.IOException;
 import java.util.stream.Stream;
 
-@Controller("/")
+@Controller()
 public class TradeController{
 
     @Inject
     private EnrichService enrichService;
 
-    @Post(value="enrich", consumes = {MediaType.TEXT_CSV}, produces = {MediaType.TEXT_CSV})
+    @Post(value="/enrich", consumes = {MediaType.TEXT_CSV}, produces = {MediaType.TEXT_CSV})
     public Flowable<String> enrichTradeData(@Body String fileContent ) {
 
         Stream<String> lines = fileContent.lines();

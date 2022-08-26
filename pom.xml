@@ -58,7 +58,6 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.14.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -89,13 +88,13 @@
       <dependency>
           <groupId>org.jetbrains</groupId>
           <artifactId>annotations</artifactId>
-          <version>RELEASE</version>
+          <version>23.0.0</version>
           <scope>compile</scope>
       </dependency>
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>RELEASE</version>
+      <version>23.0.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -103,18 +102,24 @@
       <artifactId>rxjava</artifactId>
       <version>3.1.5</version>
     </dependency>
+    <dependency>
+      <groupId>io.micronaut.rxjava3</groupId>
+      <artifactId>micronaut-rxjava3-http-client</artifactId>
+      <version>2.3.0</version>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <plugin>
+      <!--<plugin>
         <groupId>io.micronaut.build</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
-      </plugin>
+      </plugin>-->
       
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
         <configuration>
           <!-- Uncomment to enable incremental compilation -->
           <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->

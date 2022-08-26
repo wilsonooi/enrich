@@ -92,4 +92,17 @@ It will also WARN logged for following scenarios:
 
 Logger configuration is located at src\main\resources\logback.xml
 
+Assumption
+================================================================================================
+Data in product.csv and the input file, trade.csv are in correct format as described below:
 
+1) product.csv
+   - contains header; product_id,product_name
+   - contains data line(s) correspond to 2 fields above
+2) trade.csv
+   - contains header; date,product_id,currency,price
+   - contains data line(s) correspond to 4 fields above
+   - date field is in correct format - yyyyMMdd
+   
+NOTE that data/input that doesn't conform to the above assumption might cause unintended issue
+with the service/unexpected outcome or response/logged/omitted in the http response.

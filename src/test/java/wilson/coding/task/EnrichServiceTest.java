@@ -1,5 +1,7 @@
 package wilson.coding.task;
 
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import jakarta.inject.Inject;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
@@ -7,13 +9,15 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
 import org.junit.jupiter.api.Test;
 
-
-import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@MicronautTest
 class EnrichServiceTest {
+
+    @Inject
+    EnrichService enrichService;
 
     @Test
     void invalidDataShouldNotLoadToProductsAndShouldBeLogged(){
@@ -41,14 +45,11 @@ class EnrichServiceTest {
 
     @Test
     void validProductFileShouldPopulateProductMap(){
-            EnrichService enrichService =
-                    new EnrichService("product.csv");
             assertTrue(enrichService.products.size() > 0);
     }
 
     @Test
     void validDateFormatShouldReturnTrue(){
-        EnrichService enrichService = new EnrichService("product.csv");
         assertTrue(enrichService.isValidDate("20220823"));
     }
 
@@ -59,7 +60,6 @@ class EnrichServiceTest {
         listAppender.start();
         logger.addAppender(listAppender);
 
-        EnrichService enrichService = new EnrichService("product.csv");
         assertFalse(enrichService.isValidDate("20222308"));
 
         List<ILoggingEvent> logsList = listAppender.list;
@@ -76,8 +76,6 @@ class EnrichServiceTest {
         listAppender.start();
         logger.addAppender(listAppender);
 
-        EnrichService enrichService = new EnrichService("product.csv");
-
         String enrichedData = enrichService.enrichData("20160101,11,EUR,35.34");
         // JUnit assertions
         List<ILoggingEvent> logsList = listAppender.list;
@@ -90,8 +88,6 @@ class EnrichServiceTest {
 
     @Test
     void validDataShouldBeEnriched(){
-        EnrichService enrichService = new EnrichService("product.csv");
-
         assertEquals(String.format("%n20160101,REPO Domestic,EUR,30.34"),
                 enrichService.enrichData("20160101,3,EUR,30.34"));
     }
