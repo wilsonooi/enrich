@@ -18,7 +18,7 @@ public class TradeController{
 
         Stream<String> lines = fileContent.lines();
 
-        return Flowable.fromStream(lines).skip(1) //omit the header
+        return Flowable.fromStream(lines)
                 .filter(line -> enrichService.isValidLine(line))
                 //skip invalid date format line
                 .filter(line -> enrichService.isValidDate(line.split(",")[0]))
